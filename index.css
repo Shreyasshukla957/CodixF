@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:ital,wght@0,100..900;1,100..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-geist: 'Geist', "Manrope";
+    --font-hanken: "Hanken Grotesk", "Geist";
+    --font-inter: "Inter", "Hanken Grotesk";
+    --font-manrope: "Manrope", "Inter";
+}
+
+
+* {
+    outline: none !important;
+}
