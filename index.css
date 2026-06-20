@@ -1,14 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:ital,wght@0,100..900;1,100..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Share+Tech+Mono&display=swap');
 @import "tailwindcss";
 
+
+@custom-variant dark (&:is(.dark *));
+
+
 @theme {
-    --font-geist: 'Geist', "Manrope";
-    --font-hanken: "Hanken Grotesk", "Geist";
-    --font-inter: "Inter", "Hanken Grotesk";
-    --font-manrope: "Manrope", "Inter";
+  --font-geist: 'Geist', "Manrope";
+  --font-hanken: "Hanken Grotesk", "Geist";
+  --font-inter: "Inter", "Hanken Grotesk";
+  --font-manrope: "Manrope", "Inter";
+  --font-geistmono:"Geist Mono", "Hanken Grotesk";
+
+
+  --color-moon-bg: #171717;        /* neutral-900 — main background */
+  --color-moon-bg-secondary: #404040; /* neutral-700 — radial center */
+  --color-moon-surface: #ffffff;   /* white — card background */
+  --color-moon-border: #e5e7eb;    /* gray-200 — card/input border */
+  --color-moon-border-focus: #9ca3af; /* gray-400 — input focus */
+  --color-moon-text-primary: #111827; /* gray-900 — headings */
+  --color-moon-text-secondary: #4b5563; /* gray-600 — subtext */
+  --color-moon-toggle: #9ca3af; /* gray-400 — placeholders */
+  --color-moon-accent: #60a5fa;    /* blue-400 — links */
+  --color-moon-btn: #171717;       /* neutral-900 — button */
+  --color-moon-btn-hover: #374151; /* gray-700 — button hover */
+  --color-moon-error: #f87171;     /* red-400 */
+  --color-moon:#F6F1D5;         /* moon-normal */
+  --color-red-moon: #f87171;  /* moon-redish */
+  --color-moon-scheme:#31302E;
+  --color-moon-stone:#fafaf9;
+  --color-moon-bg-deep: #111111;
+   --color-moon-bg-void: #0a0a0a;
+   --color-moon-zincy:#71717b;
+   --color-moon-lzincy:#d4d4d8;
+
+  /* sun */
+  --color-sun-bg: #fff8f0;
+  --color-sun-bg-secondary: #ffedd5;
+  --color-sun-surface: #ffffff;
+  --color-sun-border: #fed7aa;
+  --color-sun-border-focus: #fb923c;
+  --color-sun-text-primary: #1a1a1a;
+  --color-sun-text-secondary: #4b5563;
+  --color-sun-text-muted: #9ca3af;
+  --color-sun-accent: #f97316;       /* orange-500 — orangish */
+  --color-sun-btn: #f97316;
+  --color-sun-btn-hover: #ea580c;
+  --color-sun-error: #f87171;
+  
+    
+
 }
 
 
 * {
     outline: none !important;
 }
+
