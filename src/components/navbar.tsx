@@ -5,8 +5,6 @@ import ThemeToggle from "../components/theme-toggle";
 import { logoutUser } from "@/features/authSlice";
 import CodixLogo from "@/assets/logo";
 import { GrPowerShutdown } from "react-icons/gr";
-import ProblemTable from "./problem-table";
-import { useState } from "react";
 import { Link } from "react-router";
 
 const Navbar = () => {
