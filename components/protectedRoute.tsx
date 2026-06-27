@@ -1,10 +1,11 @@
 import { Outlet, Navigate } from "react-router";
 import { useSelector } from "react-redux";
 import { Loader2 } from "lucide-react";
+import type{ RootState } from "@/store/store";
 
 export const ProtectedRoute = () => {
   const { isAuthenticated, isLoading } = useSelector(
-    (state: any) => state.auth,
+    (state: RootState) => state.auth,
   );
 
   if (isLoading) {
@@ -24,7 +25,7 @@ export const ProtectedRoute = () => {
 
 export const PublicRoute = () => {
   const { isAuthenticated, isLoading } = useSelector(
-    (state: any) => state.auth,
+    (state: RootState) => state.auth,
   );
 
   if (isLoading) {

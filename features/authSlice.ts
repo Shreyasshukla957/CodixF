@@ -19,8 +19,7 @@ export const RegisterUser = createAsyncThunk<object, object, { rejectValue: obje
         const res = await axiosInstance.post("/user/register", data);
         return res.data;
     } catch (error: any) {
-        console.log("REGISTER ERROR:", error.response?.data);
-        return rejectWithValue(error.response.data);
+        return rejectWithValue(error.response?.data || "Something went wrong");
 
     }
 });
@@ -30,7 +29,7 @@ export const loginUser = createAsyncThunk<object, object, { rejectValue: object 
         const res = await axiosInstance.post("/user/login", Credential);
         return res.data;
     } catch (error: any) {
-        return rejectWithValue(error.response.data);
+        return rejectWithValue(error.response?.data || "Something went wrong");
 
     }
 });
@@ -102,6 +101,8 @@ const authSlice = createSlice({
             state.isAuthenticated = false
             state.error = action.payload || "Something Went Wrong"
             state.user = null
+            console.log("login payload:", action.payload)
+
         }).addCase(RegisterUser.pending, (state) => {
             state.isLoading = true
             state.isAuthenticated = false

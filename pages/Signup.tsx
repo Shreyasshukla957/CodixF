@@ -3,13 +3,21 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BiLoaderCircle } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch } from "@/store/store";
+import { RegisterUser } from "@/features/authSlice";
+import { Link } from "react-router";
+import { EyeOff, Eye } from "lucide-react";
+import { useState } from "react";
 
 const signupSchema = z.object({
-  firstname: z.string().min(3, "Name should contain atleast 3 characters"),
+  firstName: z.string().min(3, "Atleast 3 characters"),
+  lastName: z.string().min(3, "Atleast 3 characters"),
   emailId: z.email("Invalid email"),
   password: z
     .string()
-    .min(8, "Weak Password").max(20)
+    .min(8, "Weak Password")
+    .max(20)
     .regex(/[A-Z]/, "Atleast one UpperCase Character")
     .regex(/[0-9]/, "Atleast one Number")
     .regex(/[^a-zA-Z0-9]/, "Atleast one Special Character"),
@@ -17,79 +25,120 @@ const signupSchema = z.object({
 
 interface SignupForm {
   emailId: string;
-  firstname: string;
+  firstName: string;
+  lastName: string;
   password: string;
 }
 
 export const Signup = () => {
+  const [showpass, setshowpass] = useState<boolean>(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignupForm>({ resolver: zodResolver(signupSchema) });
+  } = useForm<SignupForm>({ resolver: zodResolver(signupSchema) ,  });
 
-  return (
-    <div className="flex flex-col items-center justify-center bg-neutral-900 min-h-screen selection:text-gray-200">
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onSubmit = (data: object) => {
+    dispatch(RegisterUser(data));
+  };
+
+
+
+return (
+    <div className="flex flex-col items-center justify-center bg-radial-[circle] from-moon-bg-secondary to-moon-bg min-h-screen selection:text-moon-accent">
       <form
-        onSubmit={handleSubmit((data) => console.log(data))}
-        className="flex flex-col gap-4 bg-white border border-gray-200 rounded-2xl p-10 w-80 h-auto font-manrope shadow-sm"
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-5 bg-moon-surface border border-moon-border rounded-2xl p-10 w-97 min-h-100 font-manrope shadow-sm"
       >
-        <div className="flex items-center text-gray-900 text-xl font-bold">
-          CODIX 
-          <span className="ml-1"><BiLoaderCircle/></span>
+        <div className="flex items-center text-moon-text-primary text-xl font-bold ml-0.5">
+          CODIX
+          <span className="ml-1 hover:animate-spin transition-all">
+            <BiLoaderCircle />
+          </span>
         </div>
 
-        <input
-          {...register("firstname")}
-          placeholder="Enter your Name"
-          className="bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-gray-400 transition-colors w-full"
-          type="text"
-        />
-        {errors.firstname && (
-          <p className="mt-0.5 flex items-start gap-1.5 text-xs text-red-400 font-medium leading-5">
-            <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-red-300">
-              !
-            </span>
-            <span>{errors.firstname.message}</span>
-          </p>
-        )}
+        <div className="flex gap-2">
+          <div className="flex flex-col">
+            <input
+              {...register("firstName")}
+              placeholder="FirstName"
+              className="bg-moon-surface border border-moon-border rounded-lg px-4 py-2.5 mr-2 text-sm text-moon-text-primary placeholder-moon-text-muted outline-none focus:border-moon-border-focus transition-colors w-full"
+              type="text"
+            />
+            {errors.firstName && (
+              <p className="mt-0.5 flex items-start gap-1.5 text-xs text-moon-error font-medium leading-5">
+                <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-moon-error">!</span>
+                <span>{errors.firstName.message}</span>
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col">
+            <input
+              {...register("lastName")}
+              placeholder="LastName"
+              className="bg-moon-surface border border-moon-border rounded-lg px-4 py-2.5 text-sm text-moon-text-primary placeholder-moon-text-muted outline-none focus:border-moon-border-focus transition-colors w-full"
+              type="text"
+            />
+            {errors.lastName && (
+              <p className="mt-0.5 flex items-start gap-1.5 text-xs text-moon-error font-medium leading-5">
+                <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-moon-error">!</span>
+                <span>{errors.lastName.message}</span>
+              </p>
+            )}
+          </div>
+        </div>
 
         <input
           {...register("emailId")}
           placeholder="Enter your emailId"
-          className="bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-gray-400 transition-colors w-full"
+          className="bg-moon-surface border border-moon-border rounded-lg px-4 py-2.5 text-sm text-moon-text-primary placeholder-moon-text-muted outline-none focus:border-moon-border-focus transition-colors w-full"
           type="email"
         />
         {errors.emailId && (
-          <p className="mt-0.5 flex items-start gap-1.5 text-xs text-red-400 font-medium leading-5">
-            <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-red-300">
-              !
-            </span>
+          <p className="-mt-2 flex items-start gap-1.5 text-xs text-moon-error font-medium leading-5">
+            <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-moon-error">!</span>
             <span>{errors.emailId.message}</span>
           </p>
         )}
 
-        <input
-          {...register("password")}
-          placeholder="Enter your Password"
-          className="bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-gray-400 transition-colors w-full"
-          type="password"
-        />
+        <div className="relative w-full">
+          <input
+            {...register("password")}
+            placeholder="Enter your Password"
+            className="bg-moon-surface border border-moon-border rounded-lg px-4 py-2.5 text-sm text-moon-text-primary placeholder-moon-text-muted outline-none focus:border-moon-border-focus transition-colors w-full"
+            type={showpass ? "text" : "password"}
+          />
+          <span
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-moon-text-muted cursor-pointer"
+            onClick={() => setshowpass(!showpass)}
+          >
+            {showpass ? <EyeOff size={16} /> : <Eye size={16} />}
+          </span>
+        </div>
         {errors.password && (
-          <p className="mt-0.5 flex items-start gap-1.5 text-xs text-red-400 font-medium leading-5">
-            <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-red-300">
-              !
-            </span>
+          <p className="-mt-2 flex items-start gap-1.5 text-xs text-moon-error font-medium leading-5">
+            <span className="mt-px inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-500/10 text-[10px] text-moon-error">!</span>
             <span>{errors.password.message}</span>
           </p>
         )}
 
         <button
           type="submit"
-          className="bg-neutral-900 rounded-lg px-4 py-2.5 text-sm text-white font-semibold w-full mt-2 hover:bg-gray-700 transition-colors"
+          className="bg-moon-btn rounded-lg px-4 py-2.5 text-sm text-moon-surface font-semibold w-full mt-5 hover:bg-moon-btn-hover transition-colors hover:cursor-pointer"
         >
           Sign Up
         </button>
+
+        <span className="text-[13px] font-geist flex justify-center-safe -mt-3 text-moon-text-secondary">
+          Already have an account ?{" "}
+          <Link to={"/login"} className="text-moon-accent underline ml-0.5">
+            Sign In
+          </Link>
+        </span>
       </form>
     </div>
   );

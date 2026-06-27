@@ -33,7 +33,8 @@ function App() {
 
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<Homepage></Homepage>}></Route>
-        <Route path="/problem-page" element={<MEditor/>}></Route>
+        <Route path="/problem/:id" element={<MEditor/>}></Route>
+       
       </Route>
 
       <Route element={<AdminRoute />}>

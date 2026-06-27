@@ -80,7 +80,7 @@ export const Homepage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-sun-bg selection:bg-indigo-200  dark:bg-radial-[circle] dark:from-moon-bg-secondary dark:to-moon-bg dark:selection:bg-neutral-200 ">
+    <div className="min-h-screen bg-sun-bg selection:bg-indigo-200  dark:bg-radial-[circle] dark:from-moon-bg-secondary dark:to-moon-bg dark:selection:bg-neutral-200" >
       <Navbar />
 
       <div className="max-w-5xl mx-auto px-8 pt-[18%] pb-12 ">
@@ -100,7 +100,7 @@ export const Homepage = () => {
             className="text-sm px-4 py-2.5 rounded-lg border cursor-pointer font-manrope
               bg-transparent border-sun-border text-sun-text-secondary
               dark:border-moon-zincy/40 dark:text-moon-zincy dark:bg-transparent
-              focus:outline-none transition-colors"
+              focus:outline-none transition-colors duration-75"
           >
             {tags.map((t) => (
               <option key={t} value={t}>
@@ -115,7 +115,7 @@ export const Homepage = () => {
             className="text-sm px-4 py-2.5 rounded-lg border cursor-pointer font-manrope
               bg-transparent border-sun-border text-sun-text-secondary
               dark:border-moon-zincy/40 dark:text-moon-zincy dark:bg-transparent
-              focus:outline-none transition-colors"
+              focus:outline-none transition-colors duration-75"
           >
             {difficulties.map((d) => (
               <option key={d} value={d}>
@@ -129,7 +129,7 @@ export const Homepage = () => {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`flex-1 text-sm py-2.5 font-manrope transition-colors
+                className={`flex-1 text-sm py-2.5 font-manrope transition-colors duration-75
                   ${
                     filter === f
                       ? "bg-sun-btn text-white dark:bg-moon-lzincy dark:text-moon-bg"
@@ -151,7 +151,7 @@ export const Homepage = () => {
             className="flex text-sm px-4 py-2.5 rounded-lg border font-manrope w-[66%]
               bg-sun-surface border-sun-border text-sun-text-primary placeholder:text-sun-text-muted
               dark:bg-[#18181b] dark:border-moon-zincy/30 dark:text-moon-stone dark:placeholder:text-moon-zincy
-              focus:outline-none focus:border-sun-accent dark:focus:border-moon-lzincy transition-colors"
+              focus:outline-none focus:border-sun-accent dark:focus:border-moon-lzincy transition-colors duration-75"
           />
 
           <div className="w-px h-7 bg-sun-border dark:bg-moon-zincy/30 shrink-0" />

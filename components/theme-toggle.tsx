@@ -1,6 +1,5 @@
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
-
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(
@@ -10,7 +9,7 @@ const ThemeToggle = () => {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("codix-theme", isDark ? "dark" : "light");
-    console.log("isDark",isDark);
+    console.log("isDark", isDark);
   }, [isDark]);
 
   const toggleTheme = () => {
@@ -24,13 +23,13 @@ const ThemeToggle = () => {
     >
       <Sun
         size={18}
-        className={`absolute text-sun-accent transition-all duration-300 
+        className={`absolute text-sun-accent transition-all duration-75
                 ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"}`}
       />
       <Moon
         size={18}
-        className={`absolute text-moon-bg-secondary transition-all duration-300 
-                ${isDark ?  "opacity-0 rotate-90 scale-50" :  "opacity-100 rotate-0 scale-100"}`}
+        className={`absolute text-moon-bg-secondary transition-all duration-75
+                ${isDark ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"}`}
       />
     </button>
   );
