@@ -11,13 +11,13 @@ const Navbar = () => {
   const { user } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleProblemClick = () => {
-    document
-      .getElementById("problem-section")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  // const handleProblemClick = () => {
+  //   document
+  //     .getElementById("problem-section")
+  //     ?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    console.log("smooth");
-  };
+  //   console.log("smooth");
+  // };
 
   return (
     <div
