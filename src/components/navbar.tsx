@@ -31,28 +31,25 @@ const Navbar = () => {
             h-15 w-30 flex items-center
             cursor-pointer shrink-0"
         >
-          <CodixLogo className="h-8 w-22 text-sun-accent dark:text-moon-lzincy " />
+          <Link to="/">
+            <CodixLogo className="h-8 w-22 text-sun-accent dark:text-moon-lzincy " />
+          </Link>
         </span>
 
         <span
           className="flex items-center max-w-5xl justify-around flex-1 rounded-md px-8 py-2.5 gap-4 h-17
          "
         >
-          <Link to="/">
-            <div
-              className="flex items-center gap-4"
-              onClick={handleProblemClick}
-            >
-              <button
-                className="px-3 py-2 rounded-md font-semibold text-sm
+          {/* <div className="flex items-center gap-4" onClick={handleProblemClick}>
+            <button
+              className="px-3 py-2 rounded-md font-semibold text-sm
                bg-sun-accent/10 border border-sun-accent text-sun-accent
                dark:bg-white/10 dark:backdrop-blur-md dark:border dark:border-white/20 dark:text-white
                hover:bg-sun-accent/20 dark:hover:bg-white/20 transition-colors"
-              >
-                Problems
-              </button>
-            </div>
-          </Link>
+            >
+              Problems
+            </button>
+          </div> */}
 
           {/* yha par codix logo tha navbar k andar */}
 
